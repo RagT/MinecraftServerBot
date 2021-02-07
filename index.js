@@ -24,6 +24,7 @@ var apiCall = async function(url, method) {
 	const config = {
         method: method,
         url: url,
+        timeout: 300000,
         headers: {
  			'x-api-key': `${API_KEY}`
  		}
@@ -46,6 +47,7 @@ client.on('message', msg => {
 		if (msg.content === `${prefix}start`) {
 		 	//Start the server
 		 	startServer().then(data => {
+		 		console.log(data);
 			    msg.reply(data);
 			})
 			.catch(err => msg.reply(err)); 	
